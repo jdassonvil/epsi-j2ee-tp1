@@ -10,6 +10,10 @@ public class Album {
 	private String title;
 	private Date releaseDate;
 	
+	public Album(){
+		
+	}
+	
 	public Album(List<Track> tracks, String title, Date releaseDate) {
 		super();
 		this.tracks = tracks;

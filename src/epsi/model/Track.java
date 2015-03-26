@@ -1,10 +1,25 @@
 package epsi.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="track")
 public class Track {
+	
+	@Id
+	@GeneratedValue
+	private long id;
 	
 	private String title;
 	private int position;
 	private int length;
+	
+	public Track(){
+		
+	}
 
 	public Track(String title, int position, int length) {
 		super();

@@ -5,6 +5,10 @@ public class Artist {
 	private String name;
 	private String city;
 	
+	public Artist(){
+		
+	}
+	
 	public Artist(String name, String city) {
 		super();
 		this.name = name;
