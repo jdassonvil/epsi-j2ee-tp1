@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import epsi.model.Track;
 
 
 public class Main {
@@ -21,11 +25,15 @@ public class Main {
 			Statement stmt = conn.createStatement();
 			ResultSet result = stmt.executeQuery("SELECT * FROM track");
 			
+			List<Track> tracks = new ArrayList<Track>();
+			
 			// Parcours du resultat
 			while(result.next()){
-				System.out.print(result.getInt(1) + ". ");
-				System.out.print(result.getString(2) + " - ");
-				System.out.println(result.getInt(3) / 60 + ":" + result.getInt(3) % 60);
+				tracks.add(new Track(result.getString(2), result.getInt(1), result.getInt(3)));
+			}
+			
+			for(Track track : tracks){
+				System.out.println(track);
 			}
 					
 		}catch(SQLException sqlEx){

@@ -1,14 +1,22 @@
 package epsi.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class Album {
 	
-	private List<Track> tracks;
+	private List<Track> tracks = new ArrayList<Track>();
 	private String title;
 	private Date releaseDate;
 	
+	public Album(List<Track> tracks, String title, Date releaseDate) {
+		super();
+		this.tracks = tracks;
+		this.title = title;
+		this.releaseDate = releaseDate;
+	}
+
 	public List<Track> getTracks() {
 		return tracks;
 	}
