@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import epsi.dao.TrackDao;
 import epsi.model.Track;
 
 
@@ -22,17 +23,10 @@ public class Main {
 			
 			// Exécution d'une requête sur la base de données
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/musicstore", "root", "");
-			Statement stmt = conn.createStatement();
-			ResultSet result = stmt.executeQuery("SELECT * FROM track");
 			
-			List<Track> tracks = new ArrayList<Track>();
+			TrackDao trackDao = new TrackDao(conn);
 			
-			// Parcours du resultat
-			while(result.next()){
-				tracks.add(new Track(result.getString(2), result.getInt(1), result.getInt(3)));
-			}
-			
-			for(Track track : tracks){
+			for(Track track : trackDao.find()){
 				System.out.println(track);
 			}
 					

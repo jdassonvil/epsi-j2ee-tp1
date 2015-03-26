@@ -40,7 +40,7 @@ public class TrackDao {
 			List<Track> tracks = new ArrayList<Track>();
 			
 			while(result.next()){
-				tracks.add(new Track(result.getString("name"), result.getInt("position"), result.getInt("length")));
+				tracks.add(new Track(result.getString("title"), result.getInt("position"), result.getInt("length")));
 			}
 			
 			return tracks;
