@@ -3,6 +3,8 @@ package epsi.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +18,10 @@ public class Track {
 	private String title;
 	private int position;
 	private int length;
+	
+	@ManyToOne
+	@JoinColumn(name = "album_fk")
+	private Album album;
 	
 	public Track(){
 		
@@ -52,9 +58,19 @@ public class Track {
 		this.length = length;
 	}
 	
+	public Album getAlbum() {
+		return album;
+	}
+
+	public void setAlbum(Album album) {
+		this.album = album;
+	}
+
 	@Override
 	public String toString() {
-		return position + ". " + title + " - " + (length / 60) + ":" + (length % 60);
+		int min = length / 60;
+		int sec = length % 60;
+		return position + ". " + title + " - " + min + ":" + (sec < 10 ? "0" + sec : sec) ;
 	}
 	
 	

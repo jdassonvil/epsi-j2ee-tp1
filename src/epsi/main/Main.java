@@ -1,7 +1,7 @@
 package epsi.main;
 
-import epsi.dao.TrackDao;
-import epsi.model.Track;
+import epsi.dao.ArtistDao;
+import epsi.model.Artist;
 
 
 public class Main {
@@ -9,15 +9,16 @@ public class Main {
 	public static void main (String[] args){
 				
 		try{		
-			TrackDao trackDao = new TrackDao();
-			
-			for(Track track : trackDao.find()){
-				System.out.println(track);
+			ArtistDao artistDao = new ArtistDao();
+		
+			for(Artist artist: artistDao.find()){
+				System.out.println(artist);
 			}
-					
+								
 		}
 		catch(Exception e){
 			System.err.println("an error has occured: " + e.getMessage());
+			e.printStackTrace();	
 		}
 	}
 

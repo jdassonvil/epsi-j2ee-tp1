@@ -18,22 +18,22 @@ public class TrackDao {
 		em = emf.createEntityManager();	
 	}
 	
-	public boolean create(Track track){
-		return false;
+	public void create(Track track){
+		em.persist(track);;
 	}
 	
-	public boolean update(Track track){
-		return false;
+	public void update(Track track){
+		em.persist(track);
 	}
 	
-	public boolean delete(Track track){
-		return false;
+	public void delete(Track track){
+		em.remove(track);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Track> find(){
 			List<Track> tracks = em.createQuery("SELECT t FROM Track t").getResultList();
 			return tracks;
 	}
-	
 	
 }
