@@ -6,6 +6,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -26,7 +27,7 @@ public class Album {
 	@Column(name = "release_date")
 	private Date releaseDate;
 	
-	@OneToMany(mappedBy="album")
+	@OneToMany(mappedBy="album", fetch = FetchType.EAGER)
 	private Collection<Track> tracks;
 	
 	@ManyToOne

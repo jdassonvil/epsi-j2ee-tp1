@@ -4,36 +4,81 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import epsi.model.Track;
 
 public class TrackDao {
 
-	EntityManager em;
-	
 	public TrackDao(){
-		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
-		em = emf.createEntityManager();	
 	}
 	
 	public void create(Track track){
-		em.persist(track);;
+		
+		// Get entity manager
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		EntityManager em = emf.createEntityManager();
+		
+		//Get transaction
+		EntityTransaction transaction = em.getTransaction();
+		transaction.begin();
+		
+		em.persist(track);
+		
+		//Close entity manager
+		em.close();
+		emf.close();
 	}
 	
 	public void update(Track track){
-		em.persist(track);
+		// Get entity manager
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		EntityManager em = emf.createEntityManager();
+		
+		//Get transaction
+		EntityTransaction transaction = em.getTransaction();
+		transaction.begin();
+		
+		em.merge(track);
+		
+		//Close entity manager
+		em.close();
+		emf.close();
+
 	}
 	
 	public void delete(Track track){
+		// Get entity manager
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		EntityManager em = emf.createEntityManager();
+		
+		//Get transaction
+		EntityTransaction transaction = em.getTransaction();
+		transaction.begin();
+
 		em.remove(track);
+		
+		//Close entity manager
+		em.close();
+		emf.close();
+
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Track> find(){
-			List<Track> tracks = em.createQuery("SELECT t FROM Track t").getResultList();
-			return tracks;
+		// Get entity manager
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("musciPU");
+		EntityManager em = emf.createEntityManager();
+
+		List<Track> tracks = em.createQuery("SELECT t FROM Track t").getResultList();
+			
+		//Close entity manager
+		em.close();
+		emf.close();
+		return tracks;
+
+
 	}
 	
 }

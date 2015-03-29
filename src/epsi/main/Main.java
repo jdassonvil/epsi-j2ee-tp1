@@ -14,7 +14,7 @@ public class Main {
 			for(Artist artist: artistDao.find()){
 				System.out.println(artist);
 			}
-								
+			
 		}
 		catch(Exception e){
 			System.err.println("an error has occured: " + e.getMessage());
