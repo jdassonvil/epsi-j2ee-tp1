@@ -8,10 +8,21 @@
 		<servlet-name>hello</servlet-name>
 		<servlet-class>epsi.front.HelloServlet</servlet-class>
 	</servlet>
-
+	
 	<servlet-mapping>
 		<servlet-name>hello</servlet-name>
 		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>musicstore</servlet-name>
+		<servlet-class>epsi.front.MusicServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>musicstore</servlet-name>
+		<url-pattern>/music</url-pattern>
+	</servlet-mapping>
+
 </web-app>
