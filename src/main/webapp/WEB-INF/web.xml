@@ -15,14 +15,14 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>musicstore</servlet-name>
+		<servlet-name>musicapi</servlet-name>
 		<servlet-class>epsi.front.MusicServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>musicstore</servlet-name>
-		<url-pattern>/music</url-pattern>
+		<servlet-name>musicapi</servlet-name>
+		<url-pattern>/musicapi</url-pattern>
 	</servlet-mapping>
 
   	<welcome-file-list>
