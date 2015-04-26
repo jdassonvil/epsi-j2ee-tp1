@@ -7,6 +7,7 @@
 	<servlet>
 		<servlet-name>hello</servlet-name>
 		<servlet-class>epsi.front.HelloServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
 	<servlet-mapping>
@@ -22,11 +23,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>musicapi</servlet-name>
-		<url-pattern>/musicapi</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-
-  	<welcome-file-list>
-    	<welcome-file>index.jsp</welcome-file>
-  	</welcome-file-list>
 
 </web-app>

@@ -1,5 +1,6 @@
 <%@page import="epsi.dao.ArtistDao" %>
 <%@page import="epsi.model.Artist"%>
+<%@page import="java.util.List" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -13,9 +14,9 @@
 	<p> Liste des artistes </p>
 	<ul>
 	<%
-		ArtistDao artistDao = new ArtistDao();
+		List<Artist> artists = (List<Artist>)request.getAttribute("artists");	
 		
-		for(Artist artist: artistDao.find()){
+		for(Artist artist: artists){
 			%><li> <%= artist.getName()  %></li><%
 		}
 	%>
