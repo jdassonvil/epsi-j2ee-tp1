@@ -7,11 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HelloServlet extends HttpServlet {
+import epsi.dao.UserDao;
+import epsi.model.User;
+
+public class CollectionServlet extends HttpServlet{
 	
 	@Override
 	public void init() throws ServletException {
-		System.out.println("init: loading hello servlet");
+		System.out.println("init: login artist servlet");
 		super.init();
 	}
 	
@@ -19,10 +22,12 @@ public class HelloServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		System.out.println("Received a GET Hello Servlet");
+		System.out.println("Get /buyalbum");
+		
+		// User should be authenticated
 		
 		resp.setHeader("Content-Type", "text/html");
-		resp.getWriter().write("Hello World");
+		resp.getWriter().write("Not implemented yet !");
 	}
-
+	
 }

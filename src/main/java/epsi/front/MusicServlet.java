@@ -14,7 +14,7 @@ public class MusicServlet extends HttpServlet{
 	
 	@Override
 	public void init() throws ServletException {
-		System.out.println("loading music servlet");
+		System.out.println("init: loading music servlet");
 		super.init();
 	}
 	
@@ -27,7 +27,7 @@ public class MusicServlet extends HttpServlet{
 		ArtistDao artistDao = new ArtistDao();
 		req.setAttribute("artists", artistDao.find());
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/home.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/home.jsp");
 		dispatcher.forward(req, resp);
 	}
 	

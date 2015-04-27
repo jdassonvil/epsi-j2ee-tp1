@@ -4,26 +4,75 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee"
 	version="3.0" id="WebApp_ID">
 
+	<!-- Servlet defintions -->
+
 	<servlet>
 		<servlet-name>hello</servlet-name>
 		<servlet-class>epsi.front.HelloServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
+
+	<servlet>
+		<servlet-name>homeServlet</servlet-name>
+		<servlet-class>epsi.front.MusicServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>artistServlet</servlet-name>
+		<servlet-class>epsi.front.ArtistServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>loginServlet</servlet-name>
+		<servlet-class>epsi.front.LoginServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>albumPurchaseServlet</servlet-name>
+		<servlet-class>epsi.front.CollectionServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Servlet mapping -->
+	
+	<servlet-mapping>
+		<servlet-name>homeServlet</servlet-name>
+		<url-pattern>/app</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>artistServlet</servlet-name>
+		<url-pattern>/app/artists</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>loginServlet</servlet-name>
+		<url-pattern>/app/login</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>albumPurchaseServlet</servlet-name>
+		<url-pattern>/app/buyalbum</url-pattern>
+	</servlet-mapping>
 	
 	<servlet-mapping>
 		<servlet-name>hello</servlet-name>
 		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
 	
-	<servlet>
-		<servlet-name>musicapi</servlet-name>
-		<servlet-class>epsi.front.MusicServlet</servlet-class>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-	
 	<servlet-mapping>
-		<servlet-name>musicapi</servlet-name>
-		<url-pattern>/</url-pattern>
+  		<servlet-name>default</servlet-name>
+  		<url-pattern>/static/*</url-pattern>
 	</servlet-mapping>
+	
+	<!-- Error pages -->
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/static/404.html</location>
+	</error-page>
 
 </web-app>

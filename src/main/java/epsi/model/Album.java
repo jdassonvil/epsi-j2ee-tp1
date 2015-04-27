@@ -75,6 +75,10 @@ public class Album {
 	public void setArtist(Artist artist) {
 		this.artist = artist;
 	}
+	
+	public long getId() {
+		return id;
+	}
 
 	@Override
 	public String toString() {

@@ -3,6 +3,7 @@ package epsi.model;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -20,6 +21,10 @@ public class Artist {
 
 	private String name;
 	private String city;
+	private String biography;
+	
+	@Column(name ="image_url")
+	private String imageUrl;
 	
 	@OneToMany(mappedBy="artist", fetch = FetchType.EAGER)
 	private Collection<Album> albums;
@@ -57,6 +62,26 @@ public class Artist {
 	
 	public void setAlbums(ArrayList<Album> albums) {
 		this.albums = albums;
+	}
+	
+	public String getBiography() {
+		return biography;
+	}
+	
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+	
+	public void setBiography(String biography) {
+		this.biography = biography;
+	}
+	
+	public long getId() {
+		return id;
 	}
 	
 	@Override
