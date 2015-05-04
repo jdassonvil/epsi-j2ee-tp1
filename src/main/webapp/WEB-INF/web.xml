@@ -31,6 +31,12 @@
 	</servlet>
 	
 	<servlet>
+		<servlet-name>logoutServlet</servlet-name>
+		<servlet-class>epsi.front.LogoutServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet>
 		<servlet-name>albumPurchaseServlet</servlet-name>
 		<servlet-class>epsi.front.CollectionServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
@@ -52,6 +58,12 @@
 		<servlet-name>loginServlet</servlet-name>
 		<url-pattern>/app/login</url-pattern>
 	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>logoutServlet</servlet-name>
+		<url-pattern>/app/logout</url-pattern>
+	</servlet-mapping>
+	
 	
 	<servlet-mapping>
 		<servlet-name>albumPurchaseServlet</servlet-name>

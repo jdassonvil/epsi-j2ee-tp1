@@ -8,33 +8,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import epsi.dao.ArtistDao;
+import epsi.business.AuthenticationService;
+import epsi.dao.UserDao;
+import epsi.exception.AuthenticationException;
+import epsi.exception.UserNotFoundException;
+import epsi.model.User;
 
-public class MusicServlet extends HttpServlet{
+public class LogoutServlet extends HttpServlet{
 	
 	@Override
 	public void init() throws ServletException {
-		System.out.println("init: loading music servlet");
+		System.out.println("init: login artist servlet");
 		super.init();
-	}
-	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		this.doGet(req, resp);
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
 		
-		System.out.println("GET /");
+		System.out.println("GET /logout");
 		
-		ArtistDao artistDao = new ArtistDao();
-		req.setAttribute("artists", artistDao.find());
-
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/jsp/home.jsp");
+		req.getSession().invalidate();
+				
+		// TODO user HTTP referer for proper dispatch
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/app");
 		dispatcher.forward(req, resp);
+
 	}
 	
 }

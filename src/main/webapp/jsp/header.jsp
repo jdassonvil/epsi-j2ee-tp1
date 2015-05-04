@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@page import="java.util.Date"%>
+<%@page import="epsi.model.User"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -39,6 +40,11 @@
 				</h6>
 			</div>
 			<div class="pull-right" style="margin-top:20px">
+			
+			<%
+				if(request.getSession().getAttribute("user") == null){												
+			%>
+			
 				<form class="form-inline" action="/app/login" method="post">
 					
 					<div class="form-group">
@@ -60,6 +66,19 @@
 		  			 <button type="submit" class="btn btn-default">Sign in</button>
 				
 				</form>
+			<%
+					if(request.getAttribute("authenticationError") != null){
+						%> <p style="color:red;"> Nom d'utilisateur ou mot de passe incorrect </p> <%
+					}
+				}
+				else{
+					User user  = (User) request.getSession().getAttribute("user");
+			%>
+				<p> Connecté en tant que <%=user.getFirstName() + " " + user.getLastName()%>
+				<a href="/app/logout">(se déconnecter)</a></p>
+			<%
+				}
+			%> 
 			</div>
 		</div>
 		

@@ -7,7 +7,7 @@
 
 <ul class="media-list">
 <%
-	List<Artist> artists = (List<Artist>)request.getAttribute("artists");	
+	List<Artist> artists = (List<Artist>) request.getAttribute("artists");	
 	
 	for(Artist artist: artists){
 		%>
