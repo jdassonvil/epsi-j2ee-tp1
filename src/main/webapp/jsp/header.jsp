@@ -43,12 +43,12 @@
 					
 					<div class="form-group">
 					  <label class="sr-only" for="exampleInputEmail3">Email address</label>
-					  <input type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
+					  <input name="email" type="email" class="form-control" id="exampleInputEmail3" placeholder="Enter email">
 					</div>
 					
 					<div class="form-group">
 					  <label class="sr-only" for="exampleInputPassword3">Password</label>
-					  <input type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
+					  <input name="password" type="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
 					</div>
 					
 					 <div class="checkbox">
