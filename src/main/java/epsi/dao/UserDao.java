@@ -31,6 +31,7 @@ public class UserDao {
 		transaction.begin();
 		
 		em.persist(user);
+		transaction.commit();
 		
 		//Close entity manager
 		em.close();
@@ -47,6 +48,7 @@ public class UserDao {
 		transaction.begin();
 		
 		em.merge(user);
+		transaction.commit();
 		
 		//Close entity manager
 		em.close();
@@ -63,7 +65,8 @@ public class UserDao {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 
-		em.remove(user);
+		em.remove(em.contains(user) ? user : em.merge(user));
+		transaction.commit();
 		
 		//Close entity manager
 		em.close();

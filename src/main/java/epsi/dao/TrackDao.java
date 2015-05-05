@@ -25,7 +25,7 @@ public class TrackDao {
 		transaction.begin();
 		
 		em.persist(track);
-		
+		transaction.commit();
 		//Close entity manager
 		em.close();
 		emf.close();
@@ -41,7 +41,7 @@ public class TrackDao {
 		transaction.begin();
 		
 		em.merge(track);
-		
+		transaction.commit();
 		//Close entity manager
 		em.close();
 		emf.close();
@@ -57,8 +57,8 @@ public class TrackDao {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 
-		em.remove(track);
-		
+		em.remove(em.contains(track) ? track : em.merge(track));
+		transaction.commit();
 		//Close entity manager
 		em.close();
 		emf.close();

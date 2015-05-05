@@ -61,7 +61,7 @@ public class ArtistDao {
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
 				
-		em.remove(artist);
+		em.remove(em.contains(artist) ? artist : em.merge(artist));
 		transaction.commit();
 				
 		//Close entity manager

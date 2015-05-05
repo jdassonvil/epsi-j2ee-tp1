@@ -4,11 +4,14 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import epsi.business.AuthenticationService;
+import epsi.business.TokenService;
+import epsi.dao.TokenDao;
 import epsi.dao.UserDao;
 import epsi.exception.AuthenticationException;
 import epsi.exception.UserNotFoundException;
@@ -31,7 +34,9 @@ public class LoginServlet extends HttpServlet{
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		
-		System.out.println("Received: email = " + email + ", password = " + password);
+		Boolean rememberMe = !(req.getParameter("rememberme") == null);
+		
+		System.out.println("Received: email = " + email + ", password = " + password + ", remember me = " + rememberMe);
 		
 		AuthenticationService authenticationService = new AuthenticationService(new UserDao());
 
@@ -39,6 +44,12 @@ public class LoginServlet extends HttpServlet{
 			User user = authenticationService.login(email, password);
 			req.getSession().setAttribute("user", user);
 			System.out.println("Login servlet : user " + user.getEmail() + " is logged in");
+			
+			if(rememberMe){
+				TokenService tokenService = new TokenService(new TokenDao());
+				String token =  tokenService.generateToken(user);
+				resp.addCookie(new Cookie("loginCookie", token));
+			}
 		}catch(AuthenticationException ex){
 			req.setAttribute("authenticationError", true);
 		}
