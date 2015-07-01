@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@page import="java.util.Date"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,10 +15,28 @@
 <body>
 	<div class="container">
 	
-		<div class="header" style="height: 80px">
+		<div class="header" style="height: 100px">
 			<div class="pull-left">
 				<h1>11h</h1>
 				<h5>le site de la musique d'arrière garde...</h5>
+				<h6>Vous êtes dans le passé depuis
+				<%
+					long now =  new Date().getTime();
+					long elapsed = (now - request.getSession().getCreationTime()) / 1000 ;
+					long seconds = elapsed % 60;
+					long minutes = elapsed / 60;
+					
+					if(minutes == 0){
+						%> <%= seconds%> secondes<% 
+					}
+					else if(minutes == 1){
+						%> <%= minutes%> minute<% 
+					}
+					else{
+						%> <%= minutes%> minutes<% 
+					}
+				%>
+				</h6>
 			</div>
 			<div class="pull-right" style="margin-top:20px">
 				<form class="form-inline" action="/app/login" method="post">
