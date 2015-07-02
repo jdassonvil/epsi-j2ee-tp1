@@ -75,7 +75,7 @@
 					User user  = (User) request.getSession().getAttribute("user");
 			%>
 				<p> Connecté en tant que <%=user.getFirstName() + " " + user.getLastName()%>
-				<a href="/app/logout">(se déconnecter)</a></p>
+				<a href="/musicstore/app/logout">(se déconnecter)</a></p>
 			<%
 				}
 			%> 
