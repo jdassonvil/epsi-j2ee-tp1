@@ -6,10 +6,10 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-	<script src="./static/js/jquery.js" type="text/javascript"></script>
-	<script src="./static/js/bootstrap.js" type="text/javascript"></script>
-	<link href="./static/css/bootstrap.css" rel="stylesheet"/>
-	<link href="./static/css/style.css" rel="stylesheet"/>
+	<script src="/musicstore/static/js/jquery.js" type="text/javascript"></script>
+	<script src="/musicstore/static/js/bootstrap.js" type="text/javascript"></script>
+	<link href="/musicstore/static/css/bootstrap.css" rel="stylesheet"/>
+	<link href="/musicstore/static/css/style.css" rel="stylesheet"/>
 	
 	<title>11 heures</title>
 </head>
@@ -45,7 +45,7 @@
 				if(request.getSession().getAttribute("user") == null){												
 			%>
 			
-				<form class="form-inline" action="/app/login" method="post">
+				<form class="form-inline" action="/musicstore/app/login" method="post">
 					
 					<div class="form-group">
 					  <label class="sr-only" for="exampleInputEmail3">Email address</label>
